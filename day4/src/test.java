@@ -57,9 +57,9 @@ public class test {
         System.out.println("请输入牛奶：1为全脂牛奶，2为燕麦奶，3为脱脂牛奶（回车默认为不加牛奶）");
         int milk_type = 4;
         try {
-            temp = Integer.parseInt(sc.nextLine());
+            milk_type = Integer.parseInt(sc.nextLine());
         } catch (Exception e) {
-            temp = 4;
+            milk_type = 4;
         }
         String milk;
         switch (milk_type){
