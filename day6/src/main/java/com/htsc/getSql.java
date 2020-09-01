@@ -62,6 +62,7 @@ public class getSql {
                 Expression expression = new OrExpression(temp1, temp2);
                 str.push(expression.toString());
                 bracket.pop();
+                if (!bracket.empty()&&bracket.peek() == '(') bracket.pop();
             }
             else if(bracket.peek() == '&') {
                 String temp2=str.pop(); temp2="("+temp2+")";
@@ -69,15 +70,17 @@ public class getSql {
                 Expression expression = new AndExpression(temp1, temp2);
                 str.push(expression.toString());
                 bracket.pop();
+                if (!bracket.empty()&&bracket.peek() == '(') bracket.pop();
             }
             else if(bracket.peek() == '!') {
                 String temp=str.pop();
                 Expression expression = new NotExpression(temp, temp);
                 str.push(expression.toString());
                 bracket.pop();
+                if (!bracket.empty()&&bracket.peek() == '(') bracket.pop();
             }
             else {
-                bracket.pop();
+                throw new IllegalArgumentException();
             }
         }
         return str.peek();
