@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.htsc.dao.IRoleDao">
+    <resultMap id="roleMap" type="com.htsc.domain.Role">
+        <id property="roleld" column="rid"></id>
+        <result property="roleName" column="role_name"></result>
+        <result property="roleDesc" column="role_desc"></result>
+        <collection property="users" ofType="com.htsc.domain.User">
+            <id column="id" property="userId"></id>
+            <result column="username" property="userName"></result>
+            <result column="address" property="userAddress"></result>
+            <result column="sex" property="userSex"></result>
+            <result column="birthday" property="userBirthday"></result>
+        </collection>
+    </resultMap>
+
+    <select id="findAll" resultMap="roleMap">
+        select u.*,r.id as rid,r.role_name,r.role_desc from role r
+        left outer join user_role ur on r.id=ur.rid
+        left outer join user u on u.id=ur.uid
+    </select>
+</mapper>
