@@ -8,6 +8,11 @@ public class AccountUser implements Serializable {
     private User user;
     private Account account;
 
+    public AccountUser() {
+        this.account = new Account();
+        this.user = new User();
+    }
+
     public Integer getUid() {
         return account.getUid();
     }
@@ -26,28 +31,37 @@ public class AccountUser implements Serializable {
     public void setUserName(String name) {
         user.setUserName(name);
     }
-    public Integer getUserId() {
+    public Integer getId() {
         return user.getUserId();
     }
-    public void setUserId(Integer id) {
+    public void setId(Integer id) {
         user.setUserId(id);
     }
-    public String getUserSex() {
+    public String getSex() {
         return user.getUserSex();
     }
-    public void setUserSex(String sex) {
+    public void setSex(String sex) {
         user.setUserSex(sex);
     }
-    public String getUserAddress() {
+    public String getAddress() {
         return user.getUserAddress();
     }
-    public void setUserAddress(String address) {
+    public void setAddress(String address) {
         user.setUserAddress(address);
     }
-    public Date getUserBirthday() {
+    public Date getBirthday() {
         return user.getUserBirthday();
     }
-    public void setUserBirthday(Date birthday) {
+    public void setBirthday(Date birthday) {
         user.setUserBirthday(birthday);
+    }
+
+    @Override
+    public String toString() {
+        return "AccountUser{" +
+                "id=" + id +
+                ", user=" + user +
+                ", account=" + account +
+                '}';
     }
 }

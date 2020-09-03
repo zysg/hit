@@ -1,4 +1,3 @@
-import com.htsc.dao.IRoleDao;
 import com.htsc.dao.IUserDao;
 import com.htsc.domain.QueryVo;
 import com.htsc.domain.QueryVolds;
@@ -22,7 +21,6 @@ public class UserDaoTest {
     private IUserDao userDao;
     private InputStream in;
     private SqlSession session;
-    private IRoleDao roleDao;
 
     @Before
     public void setUp() throws Exception {
@@ -31,7 +29,6 @@ public class UserDaoTest {
         SqlSessionFactory factory = builder.build(in);
         session = factory.openSession(true);
         userDao = session.getMapper(IUserDao.class);
-        roleDao = session.getMapper(IRoleDao.class);
     }
 
     @Test
@@ -136,18 +133,6 @@ public class UserDaoTest {
         List<User> users = userDao.findlnlds(volds);
 
         Assert.assertEquals(4,users.size());
-    }
-
-    @Test
-    public void testFindAll1() {
-        List<Role> roles = roleDao.findAll();
-        Assert.assertEquals(3, roles.size());
-
-        for(Role role : roles) {
-            System.out.println("--每个角色的信息");
-            System.out.println(role);
-            System.out.println(role.getUsers());
-        }
     }
 
     @After
